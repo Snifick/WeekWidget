@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">LetsTry</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="title_activity_real_main">RealMainActivity</string>
+    <string name="mainWidgetString">WeekWidget позволяет вам контролировать текущую неделю</string>
+    <string name="StringUser">Для добавления виджета зайдите в настройки домашнего экрана, далее - виджеты, найдите виджет с названием WeekWidget и установите его на экран</string>
+    <string name="customWidget">Вы можете кастомизировать виджет под свой стиль.\nДля этого перейдите во вкладку "Настройки" и установите нужные вам параметры</string>
+    <string name="self_change">Ручной ввод состояния</string>
+    <string name="input_poschety">Текущая неделя по счету:</string>
+    <string name="input_topOrBot">Вариант недели: </string>
+    <string name="customV">Персонализация </string>
+</resources>

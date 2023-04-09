@@ -1,0 +1,18 @@
+<resources>
+
+    <style name="Widget.LetsTry.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">@drawable/app_widget_background1</item>
+    </style>
+
+    <style name="Widget.LetsTry.AppWidget.Container2" parent="android:Widget">
+
+        <item name="android:background">@drawable/app_widget_background2</item>
+    </style>
+
+
+    <style name="Widget.LetsTry.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">@drawable/app_widget_background1</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+</resources>
