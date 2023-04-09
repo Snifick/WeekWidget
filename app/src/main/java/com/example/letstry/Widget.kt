@@ -124,7 +124,7 @@ fun getWeek(context: Context): String {
         if (calendar.get(Calendar.WEEK_OF_YEAR) % 2 == 1) preferences.weekPref = "Нижняя"
         else preferences.weekPref = "Верхняя"
 
-        preferences.oddWeek = preferences.weekPref
+        preferences.oddWeek = "Верхняя"
 
 
     } else {
