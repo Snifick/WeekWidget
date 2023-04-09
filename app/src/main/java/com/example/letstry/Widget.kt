@@ -183,8 +183,10 @@ internal fun updateAppWidget(
 
 
     val appWidgetManager = AppWidgetManager.getInstance(context)
-    views.setTextViewText(R.id.appwidget_text, "Неделя: ${getWeek(context)}")
     views.setTextViewText(R.id.nochety, "По счету: ${getWeekValue(context)}")
+    views.setTextViewText(R.id.appwidget_text, "Неделя: ${getWeek(context)}")
+
+
     views.setTextViewText(R.id.appwidget_tex3, "Последнее обновление: ${currentDate}")
     views.setOnClickPendingIntent(R.id.linLayout, getPendingSelfIntent(context, SYNC_CLICKED))
 
