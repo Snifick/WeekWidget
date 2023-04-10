@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.letstry.BottomNavigation.clrDandM
 import com.example.letstry.ui.theme.*
 import java.util.*
 
@@ -103,35 +104,35 @@ fun ContentScreen3() {
 
                 Column(
                     modifier = Modifier
-                        .background(color = Teal200)
+                        .background(color = clrDandM(clrNight = black, clrLight = Teal200))
                         .padding(20.dp)
                         .wrapContentSize()
                 ) {
                     Text(
-                        text = "Приложение рекомендуется использовать только в светлой теме",
-                        style = TextStyle(fontSize = 22.sp, color = black),
+                        text = "WeekWidget - автоматический обновляющийся виджет",
+                        style = TextStyle(fontSize = 22.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
                         modifier = Modifier
                             .fillMaxWidth()
                     )
                     Divider(
                         modifier = Modifier
                             .fillMaxWidth(1f)
-                            .padding(vertical = 8.dp)
+                            .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
                     )
                     Text(
                         text = "Виджет обновляется автоматически каждые 30 минут и по нажатию на него (Не на каждом устройстве).\nПри ручной настройке виджет все так же продолжит обновляться автоматически.",
-                        style = TextStyle(fontSize = 16.sp, color = black),
+                        style = TextStyle(fontSize = 16.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
                         modifier = Modifier
                             .fillMaxWidth()
                     )
                     Divider(
                         modifier = Modifier
                             .fillMaxWidth(1f)
-                            .padding(vertical = 8.dp)
+                            .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
                     )
                     Text(
                         text = "По всем вопросам и при обнаруженных багах обращайтесь сюда:\ndrakoshago6@gmail.com (gmail)\n@Halcyontrue (Telegram)\nКонтрольная неделя: ${preferences.oddWeek}",
-                        style = TextStyle(fontSize = 16.sp, color = black),
+                        style = TextStyle(fontSize = 16.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
                         modifier = Modifier
                             .fillMaxWidth()
                     )
@@ -162,35 +163,36 @@ fun BottomViewScreen1() {
 
             Column(
                 modifier = Modifier
-                    .background(color = Teal200)
+                    .background(color = clrDandM(clrNight = black, clrLight = Teal200))
                     .padding(20.dp)
                     .wrapContentSize()
             ) {
                 Text(
                     text = stringResource(id = R.string.mainWidgetString),
-                    style = TextStyle(fontSize = 26.sp, color = black),
+                    style = TextStyle(fontSize = 26.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
                     modifier = Modifier
                         .fillMaxWidth()
                 )
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 8.dp),
+                    color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
                 )
                 Text(
                     text = stringResource(id = R.string.StringUser),
-                    style = TextStyle(fontSize = 16.sp, color = black),
+                    style = TextStyle(fontSize = 16.sp, color  = clrDandM(clrNight = clrWhite, clrLight = black)),
                     modifier = Modifier
                         .fillMaxWidth()
                 )
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
                 )
                 Text(
                     text = stringResource(id = R.string.customWidget),
-                    style = TextStyle(fontSize = 16.sp, color = black),
+                    style = TextStyle(fontSize = 16.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
                     modifier = Modifier
                         .fillMaxWidth()
                 )
@@ -208,9 +210,8 @@ fun TopViewScreen2(weekVM: WeekViewModel) {
 
     val context = LocalContext.current
     val preferences = remember { MyPref(context) }
+    weekVM.backId.value.toString()
 
-
-    Log.d("MyLog", "f.value.toString() = " + weekVM.backId.value.toString())
     Card(
         modifier = Modifier
             .padding(16.dp)
@@ -235,7 +236,7 @@ fun TopViewScreen2(weekVM: WeekViewModel) {
 
                 Text(
                     text = "WeekWidget",
-                    style = TextStyle(fontSize = 30.sp, color = Color.Black),
+                    style = TextStyle(fontSize = 30.sp, color = clrDandM(clrNight = black, clrLight = black)),
                     textAlign = TextAlign.End,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -244,7 +245,7 @@ fun TopViewScreen2(weekVM: WeekViewModel) {
                     text = "in search of convenience",
                     style = TextStyle(
                         fontSize = 22.sp,
-                        color = Color.Black,
+                        color = clrDandM(clrNight = black,  clrLight = black),
                         fontFamily = FontFamily.Cursive
                     ),
                     textAlign = TextAlign.End,
@@ -295,7 +296,7 @@ fun BottomViewSetting() {
 
         Column(
             modifier = Modifier
-                .background(color = Teal200)
+                .background(color = clrDandM(clrNight = black, clrLight = Teal200))
                 .padding(16.dp)
                 .wrapContentSize()
                 .animateContentSize()
@@ -308,7 +309,7 @@ fun BottomViewSetting() {
             ) {
                 Text(
                     text = stringResource(id = R.string.self_change),
-                    style = TextStyle(fontSize = 22.sp, color = Color.Black)
+                    style = TextStyle(fontSize = 22.sp,color = clrDandM(clrNight = clrWhite, clrLight = black))
                 )
                 Checkbox(
                     checked = isAllowed.value,
@@ -325,7 +326,7 @@ fun BottomViewSetting() {
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
                 )
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -338,26 +339,28 @@ fun BottomViewSetting() {
                         value = test.value,
                         onValueChange = {
                             test.value = it
-                            Log.d("MyLog", "it = $it")
-                            Log.d(
-                                "MyLog",
-                                "preferences.inOrder.toString() =${preferences.inOrder.toString()}"
-                            )
                         },
 
                         enabled = isAllowed.value,
                         textStyle = TextStyle(
                             fontSize = (16.sp),
-                            color = txtClr
+                            color = clrDandM(clrNight = clrWhite, clrLight = black)
                         ),
-                        isError = (!test.value.isDigitsOnly() || test.value.isBlank()),
+                        isError = (!test.value.isDigitsOnly() || test.value.isBlank()|| test.value.length > 5),
                         modifier = Modifier.weight(0.65f),
                         label = { Text(text = "Текущая неделя по счету:") },
                         colors = TextFieldDefaults.textFieldColors(
-                            focusedLabelColor = Color.Black,
-                            unfocusedIndicatorColor = Color.Black,
-                            backgroundColor = Color.White,
-                            textColor = txtClr,
+
+                            focusedLabelColor = clrDandM(clrNight = clrWhite, clrLight = black),
+                            unfocusedIndicatorColor = clrDandM(clrNight = clrWhite, clrLight = black),
+                            backgroundColor =clrDandM(clrNight = Color.DarkGray, clrLight = Color.White),
+                           textColor = clrDandM(clrNight = clrWhite, clrLight = black),
+                            cursorColor = clrDandM(clrNight = clrWhite, clrLight = black),
+                            unfocusedLabelColor = clrDandM(clrNight = clrWhite, clrLight = black),
+                            focusedIndicatorColor = clrDandM(clrNight = clrWhite, clrLight = black),
+                            errorLabelColor =clrDandM(clrNight = Color.Red, clrLight = Color.Red),
+                            errorIndicatorColor = clrDandM(clrNight = Color.Red, clrLight = Color.Red),
+
                         )
                     )
                     Spacer(modifier = Modifier.weight(0.1f))
@@ -397,7 +400,7 @@ fun BottomViewSetting() {
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
                 )
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -472,7 +475,7 @@ fun BottomViewCustomization(weekVM: WeekViewModel) {
 
         Column(
             modifier = Modifier
-                .background(color = Teal200)
+                .background(color = clrDandM(clrNight = black, clrLight = Teal200))
                 .padding(16.dp)
                 .wrapContentSize()
                 .animateContentSize()
@@ -485,7 +488,7 @@ fun BottomViewCustomization(weekVM: WeekViewModel) {
             ) {
                 Text(
                     text = stringResource(id = R.string.customV),
-                    style = TextStyle(fontSize = 22.sp, color = Color.Black)
+                    style = TextStyle(fontSize = 22.sp, color = clrDandM(clrNight = clrWhite, clrLight = black))
 
                 )
                 IconButton(onClick = {
@@ -497,7 +500,7 @@ fun BottomViewCustomization(weekVM: WeekViewModel) {
                         icon.value = R.drawable.baseline_keyboard_arrow_down_24
 
                 }) {
-                    Icon(painter = painterResource(id = icon.value), contentDescription = "down")
+                    Icon(painter = painterResource(id = icon.value), contentDescription = "down", tint = clrDandM(clrNight = clrWhite, clrLight = black))
                 }
             }
 
@@ -585,11 +588,7 @@ fun BackView(clrB: Color, clrE: Color, idshka: Int, weekVM: WeekViewModel) {
             .size(height = 100.dp, width = 330.dp)
             .clickable {
 
-                Log.d("MyLog", "click card")
-                Log.d(
-                    "MyLog",
-                    "weekVM.backId.value.toString()) = " + weekVM.backId.value.toString()
-                )
+
                 preferences.clrBegin = clrB.toArgb()
                 preferences.clrEnd = clrE.toArgb()
                 preferences.backID = idshka
@@ -616,17 +615,17 @@ fun BackView(clrB: Color, clrE: Color, idshka: Int, weekVM: WeekViewModel) {
             ) {
 
                 Text(
-                    text = "WeekWidget",
-                    style = TextStyle(fontSize = 30.sp, color = Color.Black),
-                    textAlign = TextAlign.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    text = "WeekWidget",  modifier = Modifier
+                        .fillMaxWidth(),
+                    style = TextStyle(fontSize = 30.sp, color = clrDandM(clrNight = black, clrLight = black)),
+                    textAlign = TextAlign.End
+
                 )
                 Text(
                     text = "in search of convenience",
                     style = TextStyle(
                         fontSize = 22.sp,
-                        color = Color.Black,
+                        color = clrDandM(clrNight = black, clrLight = black),
                         fontFamily = FontFamily.Cursive
                     ),
                     textAlign = TextAlign.End,
@@ -671,7 +670,17 @@ fun BackMutable(clr1: Color, clr2: Color,clr3: Color,clr4: Color, idshka: Int, w
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    brush = Brush.horizontalGradient(colors = listOf(clr1, clr2,clr3,clr4,clr3,clr2,clr1))
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            clr1,
+                            clr2,
+                            clr3,
+                            clr4,
+                            clr3,
+                            clr2,
+                            clr1
+                        )
+                    )
                 )
         )
         {
@@ -685,7 +694,7 @@ fun BackMutable(clr1: Color, clr2: Color,clr3: Color,clr4: Color, idshka: Int, w
 
                 Text(
                     text = "Динамический WeekWidget",
-                    style = TextStyle(fontSize = 20.sp, color = Color.Black),
+                    style = TextStyle(fontSize = 20.sp, color = clrDandM(clrNight = black, clrLight = black)),
                     textAlign = TextAlign.End,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -694,7 +703,7 @@ fun BackMutable(clr1: Color, clr2: Color,clr3: Color,clr4: Color, idshka: Int, w
                     text = "in search of convenience",
                     style = TextStyle(
                         fontSize = 22.sp,
-                        color = Color.Black,
+                        color = clrDandM(clrNight = black, clrLight = black),
                         fontFamily = FontFamily.Cursive
                     ),
                     textAlign = TextAlign.End,

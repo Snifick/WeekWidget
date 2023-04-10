@@ -10,10 +10,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.letstry.ui.theme.Teal200
-import com.example.letstry.ui.theme.clrBot
-import com.example.letstry.ui.theme.clrSelected
-import com.example.letstry.ui.theme.clrWhite
+import com.example.letstry.ui.theme.*
 
 @Composable
 fun BottomNavigation(navController: NavController){
@@ -23,7 +20,10 @@ fun BottomNavigation(navController: NavController){
         BottomItem.Screen2,
         BottomItem.Screen3
     )
-    androidx.compose.material.BottomNavigation(backgroundColor = clrBot) {
+    androidx.compose.material.BottomNavigation(backgroundColor = clrDandM(
+        clrNight = clrBotNight,
+        clrLight = clrBot
+    )) {
 
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoot = backStackEntry?.destination?.route
@@ -36,10 +36,10 @@ fun BottomNavigation(navController: NavController){
                 Icon(painter = painterResource(id = item.iconId), contentDescription ="Icon")
             },
             label = {
-                Text(text = item.title, fontSize = 9.sp)
+                Text(text = item.title, fontSize = 9.sp, )
             },
-            selectedContentColor =Color.White,
-                unselectedContentColor =  clrSelected
+            selectedContentColor = clrDandM(clrNight = Purple700 , clrLight = Color.White ),
+                unselectedContentColor =  clrDandM(clrNight =Color.DarkGray , clrLight = black )
                 )
         }
 

@@ -11,14 +11,14 @@
         android:icon="@mipmap/icon_widgetk"
         android:label="WeekWidget"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Design.Light.NoActionBar"
-        android:forceDarkAllowed="false"
+        android:theme="@style/Theme.LetsTry"
+        android:forceDarkAllowed="true"
         tools:targetApi="31">
         <activity
             android:name=".RealMainActivity"
             android:exported="true"
             android:label="WeekWidget"
-            android:theme="@style/Theme.Design.Light.NoActionBar"> <intent-filter>
+            android:theme="@style/Theme.LetsTry"> <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />

@@ -43,15 +43,15 @@ class RealMainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Surface(
+           Surface(
                 modifier = Modifier.fillMaxSize(),
             ) {
-
 
                 getWeek(LocalContext.current)
 
                 MainScreen()
             }
+            
         }
     }
 }

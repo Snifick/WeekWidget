@@ -8,7 +8,10 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.content.IntentSender
 import android.content.SharedPreferences
+import android.os.strictmode.IntentReceiverLeakedViolation
 import android.text.BoringLayout
 import android.util.Log
 import android.widget.RemoteViews
@@ -40,7 +43,7 @@ class Widget : AppWidgetProvider() {
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
 
-        if (SYNC_CLICKED == intent.action) {
+        if (SYNC_CLICKED == intent.action || intent.action == AppWidgetManager.ACTION_APPWIDGET_ENABLED||intent.action == AppWidgetManager.ACTION_APPWIDGET_UPDATE) {
 
             val remoteViews = RemoteViews(context.packageName, R.layout.widget)
             val preferences = MyPref(context)
@@ -105,7 +108,7 @@ class Widget : AppWidgetProvider() {
     }
 
     override fun onEnabled(context: Context) {
-
+      onReceive(context, Intent(SYNC_CLICKED))
     }
 
     override fun onDisabled(context: Context) {
