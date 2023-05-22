@@ -20,7 +20,9 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.flow.combine
+import java.text.DateFormat.getTimeInstance
 import java.text.SimpleDateFormat
 
 
@@ -36,6 +38,13 @@ class Widget : AppWidgetProvider() {
     ) {
 
         for (appWidgetId in appWidgetIds) {
+            val views: RemoteViews = RemoteViews(
+                context.packageName,
+                R.layout.widget
+            ).apply {
+                setOnClickPendingIntent(R.id.linLayout, getPendingSelfIntent(context, SYNC_CLICKED))
+            }
+
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
     }
@@ -53,12 +62,14 @@ class Widget : AppWidgetProvider() {
                 preferences.backID!!
             )
             val component = ComponentName(context, Widget::class.java)
-            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+            val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
+
+
             val currentDate = sdf.format(Date())
             val appWidgetManager = AppWidgetManager.getInstance(context)
             remoteViews.setTextViewText(R.id.nochety, "По счету: ${getWeekValue(context)}")
             remoteViews.setTextViewText(R.id.appwidget_text, "Неделя: ${getWeek(context)}")
-            remoteViews.setTextViewText(R.id.appwidget_tex3, "Последнее обновление: ${currentDate}")
+            remoteViews.setTextViewText(R.id.appwidget_tex3, "Последнее обновление: $currentDate")
 
             if(preferences.mutableBackIsSelected == true){
                 f++
@@ -100,9 +111,6 @@ class Widget : AppWidgetProvider() {
 
                 }
             }
-
-
-
             appWidgetManager.updateAppWidget(component, remoteViews)
         }
     }
@@ -119,17 +127,10 @@ class Widget : AppWidgetProvider() {
 fun getWeek(context: Context): String {
 
     val preferences = MyPref(context)
-    val calendar = Calendar.getInstance()
-
+    getWeekValue(context)
 
     if (preferences.weekPref == null) {
-        getWeekValue(context)
-        if (calendar.get(Calendar.WEEK_OF_YEAR) % 2 == 1) preferences.weekPref = "Нижняя"
-        else preferences.weekPref = "Верхняя"
-
-        preferences.oddWeek = "Верхняя"
-
-
+        preferences.oddWeek = "?"
     } else {
 
         if(preferences.inOrderStartFrom!! % 2 == preferences.inOrder!! %2)
@@ -157,14 +158,12 @@ fun getWeekValue(context: Context): Int {
 
     val calendar = Calendar.getInstance()
 
-    var different = preferences.inOrderWeekOfYearBegin!! - preferences.inOrderStartFrom!!
-    if (preferences.inOrderWeekOfYearBegin == -1) {
-        different = 6
-    }
-
-
+    val different = preferences.inOrderWeekOfYearBegin!! - preferences.inOrderStartFrom!!
 
     preferences.inOrder = calendar.get(Calendar.WEEK_OF_YEAR) - different
+    if (preferences.inOrderWeekOfYearBegin == -1) {
+        preferences.inOrder = 0
+    }
 
 
     return preferences.inOrder!!
@@ -181,7 +180,8 @@ internal fun updateAppWidget(
     val views = RemoteViews(context.packageName, R.layout.widget)
 
 
-    val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+    val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
+
     val currentDate = sdf.format(Date())
 
 
@@ -190,7 +190,7 @@ internal fun updateAppWidget(
     views.setTextViewText(R.id.appwidget_text, "Неделя: ${getWeek(context)}")
 
 
-    views.setTextViewText(R.id.appwidget_tex3, "Последнее обновление: ${currentDate}")
+    views.setTextViewText(R.id.appwidget_tex3, "Последнее обновление: $currentDate")
     views.setOnClickPendingIntent(R.id.linLayout, getPendingSelfIntent(context, SYNC_CLICKED))
 
 
@@ -200,9 +200,10 @@ internal fun updateAppWidget(
 
 fun getPendingSelfIntent(context: Context, action: String?): PendingIntent {
 
-    var intent = Intent(context, Widget::class.java)
-    intent.setAction(action)
-    return PendingIntent.getBroadcast(context, 0, intent, 0)
+
+    val intent = Intent(context, Widget::class.java)
+    intent.action = action
+    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
 }
 

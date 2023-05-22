@@ -49,6 +49,7 @@ fun ContentScreen1() {
     )
     Column(
         modifier = Modifier
+            .statusBarsPadding()
             .fillMaxSize()
     ) {
         BottomViewScreen1()
@@ -67,8 +68,9 @@ fun ContentScreen2() {
     )
     Column(
         modifier = Modifier
-            .padding(bottom = 16.dp)
+            .systemBarsPadding()
             .fillMaxSize()
+            .padding(bottom = 74.dp)
     ) {
         TopViewScreen2(weekVM)
         BottomViewSetting()
@@ -76,74 +78,6 @@ fun ContentScreen2() {
     }
 }
 
-@Composable
-fun ContentScreen3() {
-    val context = LocalContext.current
-    val preferences = remember(context) { MyPref(context) }
-    Image(
-        painter = painterResource(id = R.drawable.main3),
-        contentDescription = "back3",
-        modifier = Modifier.fillMaxSize(),
-        contentScale = ContentScale.Crop
-    )
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize(), contentAlignment = Alignment.TopCenter
-        )
-        {
-            Card(
-                shape = RoundedCornerShape(12.dp), modifier = Modifier
-                    .padding(16.dp)
-                    .wrapContentSize()
-            ) {
-
-                Column(
-                    modifier = Modifier
-                        .background(color = clrDandM(clrNight = black, clrLight = Teal200))
-                        .padding(20.dp)
-                        .wrapContentSize()
-                ) {
-                    Text(
-                        text = "WeekWidget - автоматический обновляющийся виджет",
-                        style = TextStyle(fontSize = 22.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    )
-                    Divider(
-                        modifier = Modifier
-                            .fillMaxWidth(1f)
-                            .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
-                    )
-                    Text(
-                        text = "Виджет обновляется автоматически каждые 30 минут и по нажатию на него (Не на каждом устройстве).\nПри ручной настройке виджет все так же продолжит обновляться автоматически.",
-                        style = TextStyle(fontSize = 16.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    )
-                    Divider(
-                        modifier = Modifier
-                            .fillMaxWidth(1f)
-                            .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
-                    )
-                    Text(
-                        text = "По всем вопросам и при обнаруженных багах обращайтесь сюда:\ndrakoshago6@gmail.com (gmail)\n@Halcyontrue (Telegram)\nКонтрольная неделя: ${preferences.oddWeek}",
-                        style = TextStyle(fontSize = 16.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    )
-                }
-
-
-            }
-
-        }
-    }
-}
 
 
 @Composable
@@ -158,18 +92,29 @@ fun BottomViewScreen1() {
         Card(
             shape = RoundedCornerShape(12.dp), modifier = Modifier
                 .padding(16.dp)
-                .wrapContentSize()
+                .wrapContentSize(),
+            backgroundColor = clrDandM(clrNight = clrBotNight, clrLight = Teal200)
         ) {
 
             Column(
                 modifier = Modifier
-                    .background(color = clrDandM(clrNight = black, clrLight = Teal200))
                     .padding(20.dp)
                     .wrapContentSize()
             ) {
                 Text(
                     text = stringResource(id = R.string.mainWidgetString),
-                    style = TextStyle(fontSize = 26.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
+                    style = TextStyle(fontSize = 26.sp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+                Divider(
+                    modifier = Modifier
+                        .fillMaxWidth(1f)
+                        .padding(vertical = 8.dp)
+                )
+                Text(
+                    text = stringResource(id = R.string.StringUser),
+                    style = TextStyle(fontSize = 16.sp),
                     modifier = Modifier
                         .fillMaxWidth()
                 )
@@ -177,22 +122,21 @@ fun BottomViewScreen1() {
                     modifier = Modifier
                         .fillMaxWidth(1f)
                         .padding(vertical = 8.dp),
-                    color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
                 )
                 Text(
-                    text = stringResource(id = R.string.StringUser),
-                    style = TextStyle(fontSize = 16.sp, color  = clrDandM(clrNight = clrWhite, clrLight = black)),
+                    text = stringResource(id = R.string.customWidget),
+                    style = TextStyle(fontSize = 16.sp),
                     modifier = Modifier
                         .fillMaxWidth()
                 )
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .padding(vertical = 8.dp),     color  = clrDandM(clrNight = cdividerNight, clrLight = cdivider)
+                        .padding(vertical = 8.dp)
                 )
                 Text(
-                    text = stringResource(id = R.string.customWidget),
-                    style = TextStyle(fontSize = 16.sp, color = clrDandM(clrNight = clrWhite, clrLight = black)),
+                    text = "Виджет обновляется автоматически каждые 30 минут и по нажатию на него.\nПри ручной настройке виджет все так же продолжит обновляться автоматически.",
+                    style = TextStyle(fontSize = 16.sp),
                     modifier = Modifier
                         .fillMaxWidth()
                 )
@@ -366,7 +310,6 @@ fun BottomViewSetting() {
                     Spacer(modifier = Modifier.weight(0.1f))
                     OutlinedButton(
                         onClick = {
-                            Log.d("MyLog", "Нажали ОК")
                             if (!test.value.isDigitsOnly() || test.value.isBlank() || test.value.length > 5) {
                                 Toast.makeText(context, "Неверный ввод недели", Toast.LENGTH_SHORT)
                                     .show()
@@ -418,7 +361,7 @@ fun BottomViewSetting() {
                             isWeekBot = false
                             preferences.weekPref = "Верхняя"
                             widget.onReceive(context, Intent("WidgetTextClicked"))
-                            Log.d("MyLog", "Выбрали верхнюю")
+
                         },
                         modifier = Modifier.weight(0.5f),
                         shape = RoundedCornerShape(16.dp),
@@ -440,7 +383,7 @@ fun BottomViewSetting() {
                             isWeekTop = false
                             isWeekBot = true
                             widget.onReceive(context, Intent("WidgetTextClicked"))
-                            Log.d("MyLog", "Выбрали нижнюю")
+
                         },
                         modifier = Modifier.weight(0.5f),
                         shape = RoundedCornerShape(16.dp),
@@ -531,18 +474,8 @@ fun BottomViewCustomization(weekVM: WeekViewModel) {
                         R.drawable.app_widget_background3,
                         weekVM
                     )
-                    BackView(
-                        Color(0xFFCDDC39),
-                        Color(0xFF4CAF50),
-                        R.drawable.app_widget_background4,
-                        weekVM
-                    )
-                    BackView(
-                        Color(0xFFFFFFFF),
-                        Color(0xFF00BCD4),
-                        R.drawable.app_widget_background5,
-                        weekVM
-                    )
+
+
                     BackView(
                         Color(0xFF6E7ED6),
                         Color(0xFFC04992),
@@ -550,9 +483,9 @@ fun BottomViewCustomization(weekVM: WeekViewModel) {
                         weekVM
                     )
                     BackView(
-                        Color(0xFFFFFFFF),
-                        Color(0xFFFF0057),
-                        R.drawable.app_widget_background7,
+                        Color(0xFFCDDC39),
+                        Color(0xFF4CAF50),
+                        R.drawable.app_widget_background4,
                         weekVM
                     )
                     BackView(
@@ -567,6 +500,20 @@ fun BottomViewCustomization(weekVM: WeekViewModel) {
                         R.drawable.app_widget_background9,
                         weekVM
                     )
+                    BackView(
+                        Color(0xFFFFFFFF),
+                        Color(0xFFFF0057),
+                        R.drawable.app_widget_background7,
+                        weekVM
+                    )
+                    BackView(
+                        Color(0xFFFFFFFF),
+                        Color(0xFF00BCD4),
+                        R.drawable.app_widget_background5,
+                        weekVM
+                    )
+
+
                 }
 
             }
@@ -652,11 +599,6 @@ fun BackMutable(clr1: Color, clr2: Color,clr3: Color,clr4: Color, idshka: Int, w
             .size(height = 100.dp, width = 330.dp)
             .clickable {
 
-                Log.d("MyLog", "click card")
-                Log.d(
-                    "MyLog",
-                    "weekVM.backId.value.toString()) = " + weekVM.backId.value.toString()
-                )
                 preferences.clrBegin = clr1.toArgb()
                 preferences.clrEnd = clr4.toArgb()
                 preferences.backID = idshka

@@ -11,15 +11,15 @@ class MyPref(context: Context) {
         set(value) = sharedPreferences.edit().putBoolean("mutableBackIsSelected", value?:false).apply()
 
     var backID: Int?
-        get() = sharedPreferences.getInt("backId", R.drawable.app_widget_background1)
+        get() = sharedPreferences.getInt("backId", R.drawable.app_widget_background6)
         set(value) = sharedPreferences.edit().putInt("backId", value?:0).apply()
 
     var clrBegin: Int?
-        get() = sharedPreferences.getInt("clrBegin", 0xFFFBD33E.toInt())
+        get() = sharedPreferences.getInt("clrBegin", 0xFF6E7ED6.toInt())
         set(value) = sharedPreferences.edit().putInt("clrBegin", value?:0).apply()
 
     var clrEnd: Int?
-        get() = sharedPreferences.getInt("clrEnd", 0xFFF7893B.toInt())
+        get() = sharedPreferences.getInt("clrEnd", 0xFFC04992.toInt())
         set(value) = sharedPreferences.edit().putInt("clrEnd", value?:0).apply()
 
 
@@ -28,7 +28,7 @@ class MyPref(context: Context) {
         set(value) = sharedPreferences.edit().putInt("inOrderWeekStart", value?:0).apply()
 
     var inOrderStartFrom: Int?
-        get() = sharedPreferences.getInt("inOrderStart", 8)
+        get() = sharedPreferences.getInt("inOrderStart", -1)
         set(value) = sharedPreferences.edit().putInt("inOrderStart", value?:0).apply()
 
     var inOrder: Int?

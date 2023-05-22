@@ -2,15 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.LetsTry" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#673AB7</item>
-        <item name="colorPrimaryVariant">#673AB7</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#673AB7</item>
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
 
         <!-- Customize your theme here. -->
     </style>

@@ -17,11 +17,11 @@ import androidx.compose.ui.unit.dp
 
 import com.example.letstry.ContentScreen1
 import com.example.letstry.ContentScreen2
-import com.example.letstry.ContentScreen3
+
 
 
 @Composable
-fun Screen1(){
+fun Screen3(){
 
 
     ContentScreen1()
@@ -30,10 +30,5 @@ fun Screen1(){
 fun Screen2(){
 
     ContentScreen2()
-}
-@Composable
-fun Screen3(){
-
-    ContentScreen3()
 }
 

@@ -7,5 +7,8 @@
     <style name="Theme.LetsTry.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault.DayNight">
         <item name="appWidgetRadius">@android:dimen/system_app_widget_background_radius</item>
         <item name="appWidgetInnerRadius">@android:dimen/system_app_widget_inner_radius</item>
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
     </style>
 </resources>

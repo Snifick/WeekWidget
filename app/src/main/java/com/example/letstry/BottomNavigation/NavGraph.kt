@@ -8,10 +8,7 @@ import androidx.navigation.compose.composable
 
 @Composable
 fun NavGraph(navHostController: NavHostController) {
-    NavHost(navController = navHostController, startDestination = "screen_1") {
-        composable("screen_1") {
-            Screen1()
-        }
+    NavHost(navController = navHostController, startDestination = "screen_2") {
         composable("screen_2") {
 
          Screen2()

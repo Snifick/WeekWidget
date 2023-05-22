@@ -3,6 +3,8 @@ package com.example.letstry
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Intent
+import android.content.pm.ActivityInfo.WindowLayout
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -32,26 +34,43 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
+import androidx.core.view.ContentInfoCompat.Flags
+import androidx.core.view.WindowCompat
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 
 import com.example.letstry.BottomNavigation.MainScreen
 import com.example.letstry.ui.theme.*
 import com.google.android.material.divider.MaterialDivider
+import java.time.Duration
 import java.util.*
 
 class RealMainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val workManager = WorkManager.getInstance(this)
+        val periodicWorkRequest =     PeriodicWorkRequestBuilder<MyWorker>(Duration.ofMinutes(30)).build()
+        workManager.enqueue(periodicWorkRequest)
+        WindowCompat.setDecorFitsSystemWindows(window,false)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.newclrBot)
 
         setContent {
-           Surface(
-                modifier = Modifier.fillMaxSize(),
-            ) {
+            MaterialTheme {
 
-                getWeek(LocalContext.current)
 
-                MainScreen()
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .navigationBarsPadding(),
+                ) {
+
+                    getWeek(LocalContext.current)
+
+                    MainScreen()
+                }
+
             }
-            
         }
     }
 }

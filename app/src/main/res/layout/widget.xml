@@ -10,7 +10,7 @@
     android:id="@+id/linLayout"
     android:layout_height="wrap_content"
     android:theme="@style/Theme.LetsTry.AppWidgetContainer"
-    android:background="@drawable/app_widget_background1"
+    android:background="@drawable/app_widget_background6"
     android:orientation="vertical"
     android:padding="12dp"
     >
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="Последнее обновление: 30/3/2023 11:16:25"
+        android:text="Последнее обновление: --/--/---- --:--:--"
         android:textAlignment="center"
         android:textSize="12sp"
         android:textColor="#252525"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:text="По счету:12"
+        android:text="По счету:--"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:textSize="12sp"
@@ -48,7 +48,7 @@
 
 
         android:gravity="center"
-        android:text="Неделя: НИЖНЯЯ"
+        android:text="Неделя: ------"
         android:textAlignment="center"
         android:textSize="26sp"
         android:textColor="#252525"

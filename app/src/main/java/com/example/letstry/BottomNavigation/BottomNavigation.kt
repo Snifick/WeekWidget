@@ -16,7 +16,6 @@ import com.example.letstry.ui.theme.*
 fun BottomNavigation(navController: NavController){
 
     val listItems = listOf(
-        BottomItem.Screen1,
         BottomItem.Screen2,
         BottomItem.Screen3
     )
