@@ -12,47 +12,57 @@
     android:theme="@style/Theme.LetsTry.AppWidgetContainer"
     android:background="@drawable/app_widget_background6"
     android:orientation="vertical"
-    android:padding="12dp"
+    android:padding="8dp"
     >
-
-
-    <TextView
-        android:id="@+id/appwidget_tex3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="Последнее обновление: --/--/---- --:--:--"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        android:textColor="#252525"
-        android:textStyle="bold|italic" />
     <TextView
 
-        android:id="@+id/nochety"
+    android:id="@+id/appwidget_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="2"
+    android:text="------"
+        android:textStyle="bold"
+    android:layout_gravity="center"
+    android:textSize="28dp"
+    android:textColor="#252525"
+        android:fontFamily="@font/comfortaabold"
+     />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:text="По счету:--"
-        android:layout_centerInParent="true"
+
+        android:id="@+id/nochety"
+
         android:layout_gravity="center"
-        android:textSize="12sp"
+        android:text="По счету:--"
+        android:textSize="12dp"
+        android:textColor="#252525"
+        android:textStyle="bold|italic" />
+    <TextView
+
+        android:id="@+id/appwidget_tex3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_gravity="center"
+        android:text="Обновлено: --/--/---- --:--:--"
+        android:textSize="12dp"
         android:textColor="#252525"
         android:textStyle="bold|italic" />
 
-    <TextView
-        android:id="@+id/appwidget_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
 
 
-        android:gravity="center"
-        android:text="Неделя: ------"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        android:textColor="#252525"
-        android:textStyle="bold" />
+
+
+
+
+
+
+
+
+
+
 
 
 

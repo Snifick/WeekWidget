@@ -68,8 +68,8 @@ class Widget : AppWidgetProvider() {
             val currentDate = sdf.format(Date())
             val appWidgetManager = AppWidgetManager.getInstance(context)
             remoteViews.setTextViewText(R.id.nochety, "По счету: ${getWeekValue(context)}")
-            remoteViews.setTextViewText(R.id.appwidget_text, "Неделя: ${getWeek(context)}")
-            remoteViews.setTextViewText(R.id.appwidget_tex3, "Последнее обновление: $currentDate")
+            remoteViews.setTextViewText(R.id.appwidget_text, "${getWeek(context)}")
+            remoteViews.setTextViewText(R.id.appwidget_tex3, "Обновлено: $currentDate")
 
             if(preferences.mutableBackIsSelected == true){
                 f++
@@ -187,7 +187,7 @@ internal fun updateAppWidget(
 
     val appWidgetManager = AppWidgetManager.getInstance(context)
     views.setTextViewText(R.id.nochety, "По счету: ${getWeekValue(context)}")
-    views.setTextViewText(R.id.appwidget_text, "Неделя: ${getWeek(context)}")
+    views.setTextViewText(R.id.appwidget_text, "${getWeek(context)}")
 
 
     views.setTextViewText(R.id.appwidget_tex3, "Последнее обновление: $currentDate")
