@@ -9,11 +9,12 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/icon_widgetknew2"
+        android:roundIcon="@mipmap/icon_widgetknew2_round"
         android:label="WeekWidget"
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsTry"
         android:forceDarkAllowed="true"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <activity
             android:name=".RealMainActivity"
             android:exported="true"
@@ -29,6 +30,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+
             </intent-filter>
 
             <meta-data

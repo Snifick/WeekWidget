@@ -105,40 +105,40 @@ fun BottomViewScreen1() {
                     text = stringResource(id = R.string.mainWidgetString),
                     style = TextStyle(fontSize = 26.sp),
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxWidth(), color = clrDandM(clrNight = Color.White, clrLight =Color.Black )
                 )
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 8.dp), color = clrDandM(clrNight = Color.Gray, clrLight =Color.Gray )
                 )
                 Text(
                     text = stringResource(id = R.string.StringUser),
                     style = TextStyle(fontSize = 16.sp),
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxWidth(), color = clrDandM(clrNight = Color.White, clrLight =Color.Black )
                 )
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 8.dp), color = clrDandM(clrNight = Color.Gray, clrLight =Color.Gray )
                 )
                 Text(
                     text = stringResource(id = R.string.customWidget),
                     style = TextStyle(fontSize = 16.sp),
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxWidth(), color = clrDandM(clrNight = Color.White, clrLight =Color.Black )
                 )
                 Divider(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 8.dp), color = clrDandM(clrNight = Color.Gray, clrLight =Color.Gray)
                 )
                 Text(
                     text = "Виджет обновляется автоматически каждые 30 минут и по нажатию на него.\nПри ручной настройке виджет все так же продолжит обновляться автоматически.",
                     style = TextStyle(fontSize = 16.sp),
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxWidth(), color = clrDandM(clrNight = Color.White, clrLight =Color.Black )
                 )
             }
 
@@ -180,7 +180,7 @@ fun TopViewScreen2(weekVM: WeekViewModel) {
 
                 Text(
                     text = "WeekWidget",
-                    style = TextStyle(fontSize = 30.sp, color = clrDandM(clrNight = black, clrLight = black)),
+                    style = TextStyle(fontSize = 30.sp, color = clrDandM(clrNight =Color.Black, clrLight = Color.Black)),
                     textAlign = TextAlign.End,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -189,7 +189,7 @@ fun TopViewScreen2(weekVM: WeekViewModel) {
                     text = "in search of convenience",
                     style = TextStyle(
                         fontSize = 22.sp,
-                        color = clrDandM(clrNight = black,  clrLight = black),
+                        color = clrDandM(clrNight = Color.Black,  clrLight = Color.Black),
                         fontFamily = FontFamily.Cursive
                     ),
                     textAlign = TextAlign.End,
