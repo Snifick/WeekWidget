@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/icon_widgetknew"
+        android:icon="@mipmap/icon_widgetknew2"
         android:label="WeekWidget"
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsTry"
